@@ -1,0 +1,20 @@
+version: "2.39.2"
+
+services:
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+
+  api:
+    build:
+      context: .
+    ports:
+      - 5000:5000
+    restart: always
+    depends_on:
+      - mongo
+    volumes:
+      - .:/app
