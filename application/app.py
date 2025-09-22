@@ -39,6 +39,7 @@ def validar_cpf(cpf):
             return False
     return True
 
+
 class Users(Resource):
     def get(self):
         return jsonify(UserModel.objects())
@@ -49,21 +50,16 @@ class User(Resource):
         data = parser.parse_args()
         if not validar_cpf(data['cpf']):
             return {'message': 'CPF Inválido'}, 400
-        
+
         try:
             response = UserModel(**data).save()
             return {'message': f"Usuário {response} criado com sucesso!"}, 201
         except NotUniqueError:
             return {"message": "CPF já existente!"}, 400
 
-
     def get(self, cpf):
-            response = UserModel.objects(cpf=cpf)
-            
-            if response :
-                return jsonify(response)
-            
-            return{"message": "Usuário não existe no banco de dados!"}, 400
+        response = UserModel.objects(cpf=cpf)
+        if response:
+            return jsonify(response)
 
-
-
+        return {"message": "Usuário não existe no banco de dados!"}, 400

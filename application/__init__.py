@@ -3,6 +3,7 @@ from flask_restful import Api
 from .db import init_db
 from .app import User, Users
 
+
 def create_app(config):
     app = Flask(__name__)
     api = Api(app)
