@@ -1,5 +1,5 @@
-from flask import Flask, jsonify
-from flask_restful import Resource, Api, reqparse
+import jsonify
+import reqparse
 from mongoengine import NotUniqueError
 from .model import UserModel
 import re
