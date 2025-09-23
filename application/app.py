@@ -7,11 +7,27 @@ import traceback
 
 # Define os argumentos esperados na requisição
 parser = reqparse.RequestParser()
-parser.add_argument('first_name', type=str, required=True, help="This field cannot be blank")
-parser.add_argument('last_name', type=str, required=True, help="This field cannot be blank")
-parser.add_argument('cpf', type=str, required=True, help="This field cannot be blank")
-parser.add_argument('email', type=str, required=True, help="This field cannot be blank")
-parser.add_argument('birth_date', type=str, required=True, help="This field cannot be blank")
+parser.add_argument('first_name',
+                    type=str,
+                    required=True,
+                    help="This field cannot be blank")
+parser.add_argument('last_name',
+                    type=str,
+                    required=True,
+                    help="This field cannot be blank")
+parser.add_argument('cpf',
+                    type=str,
+                    required=True,
+                    help="This field cannot be blank")
+parser.add_argument('email',
+                    type=str,
+                    required=True,
+                    help="This field cannot be blank")
+parser.add_argument('birth_date',
+                    type=str,
+                    required=True,
+                    help="This field cannot be blank")
+
 
 # Validação de CPF
 def validar_cpf(cpf):
@@ -25,6 +41,7 @@ def validar_cpf(cpf):
             return False
     return True
 
+
 # Endpoint /users
 class Users(Resource):
     def get(self):
@@ -33,6 +50,7 @@ class Users(Resource):
         except Exception as e:
             traceback.print_exc()
             return {"error": str(e)}, 500
+
 
 # Endpoint /user e /user/<cpf>
 class User(Resource):

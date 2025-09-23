@@ -4,7 +4,7 @@ import os
 class DevConfig:
     MONGODB_SETTINGS = {
         "db": os.getenv("MONGODB_DB", "users"),
-        "host": os.getenv("MONGODB_HOST", "localhost"), 
+        "host": os.getenv("MONGODB_HOST", "localhost"),
         "port": int(os.getenv("MONGODB_PORT", 27017)),
         "username": os.getenv("MONGODB_USER", "admin"),
         "password": os.getenv("MONGODB_PASSWORD", "admin"),
